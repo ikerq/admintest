@@ -1,0 +1,18 @@
+{
+  "name": "admintest",
+  "description": "Proyecto de prueba de adminLte",
+  "main": "",
+  "authors": [
+    "Iker Quiros"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_resources",
+    "test",
+    "tests"
+  ]
+}
