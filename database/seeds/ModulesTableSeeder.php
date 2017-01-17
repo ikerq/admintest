@@ -1,5 +1,5 @@
 <?php
-use App\Module;
+use App\Entities\Module;
 use Illuminate\Database\Seeder;
 
 class ModulesTableSeeder extends Seeder

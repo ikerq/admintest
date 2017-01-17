@@ -1,6 +1,6 @@
 <?php
 
-use App\Module;
+use App\Entities\Module;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -27,8 +27,8 @@ class CreateModulesTable extends Migration
         });
 
         Artisan::call('db:seed',[
-            '--class' => 'ModulesTableSeeder',
-            '--force' => true
+                '--class' => 'ModulesTableSeeder',
+                '--force' => true
             ]
         );
     }
@@ -40,6 +40,6 @@ class CreateModulesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('modules');
     }
 }

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('localphone');
             $table->string('password');
             $table->integer('id_profile')->default(2);
-            $table->integer('active')->default(0);
+            $table->enum('active', ['yes', 'no']);
             $table->integer('password_reset')->default(1);
             $table->rememberToken();
             $table->timestamps();

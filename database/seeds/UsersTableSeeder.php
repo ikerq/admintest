@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
             'first_name'     => 'Eliana',
             'last_name'      => 'Rodriguez',
             'sex'            => 2,
-            'email'          => 'elina@gmail.com',
+            'email'          => 'eliana@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
             'id_profile'     => 1,
