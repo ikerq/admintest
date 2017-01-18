@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'admin@admin.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('bonsai-tivoli'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'ikerq15@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'eliana@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'milaelina@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'jc@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 2,
+            'profile_id'     => 2,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -74,7 +74,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'mf@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 2,
+            'profile_id'     => 2,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -85,7 +85,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'jp@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 2,
+            'profile_id'     => 2,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -96,7 +96,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'fp@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -107,7 +107,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'gb@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -118,7 +118,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'yr@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 2,
+            'profile_id'     => 2,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -129,7 +129,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'eb@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -140,7 +140,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'as@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 2,
+            'profile_id'     => 2,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -151,7 +151,7 @@ class UsersTableSeeder extends Seeder
             'email'          => 'ag@gmail.com',
             'cellphone'       => '+56945139944',
             'password'       => bcrypt('123456'),
-            'id_profile'     => 1,
+            'profile_id'     => 1,
             'active'         => 1,
             'password_reset' => 0,
         ]);
@@ -162,7 +162,7 @@ class UsersTableSeeder extends Seeder
         	'email'			 => 'hm@gmail.com',
             'cellphone'       => '+56945139944',
         	'password'  	 => bcrypt('123456'),
-        	'id_profile'	 => 2,
+        	'profile_id'	 => 2,
             'active'         => 1,
         	'password_reset' => 0,
     	]);

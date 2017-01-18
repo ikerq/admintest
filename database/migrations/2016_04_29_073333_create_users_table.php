@@ -22,11 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('cellphone');
             $table->string('localphone');
             $table->string('password');
-            $table->integer('id_profile')->default(2);
             $table->enum('active', ['yes', 'no']);
             $table->integer('password_reset')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('profile_id')->default(2)->unsigned()->nullable();
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('set null');
         });
         
         Artisan::call('db:seed',[
