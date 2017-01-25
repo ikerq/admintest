@@ -10,7 +10,8 @@ class UsersTableSeeder extends BaseSeeder
         return new User();
     }
 
-    public function getDummyData(Generator $faker, array $customValue = array()){
+    public function getDummyData(Generator $faker, array $customValue = array())
+    {
         return  [
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,
@@ -19,7 +20,7 @@ class UsersTableSeeder extends BaseSeeder
             'cellphone' => '+56945139944',
             'password' => bcrypt('123456'),
             'profile_id' => $this->getRandom('Profile')->id,
-            'active' => rand(1,2),
+            'active' => rand(1, 2),
             'password_reset' => 0,
         ];
     }
@@ -77,5 +78,4 @@ class UsersTableSeeder extends BaseSeeder
             'password_reset' => 0,
         ]);
     }
-
 }

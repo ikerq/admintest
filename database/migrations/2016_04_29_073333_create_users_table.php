@@ -7,8 +7,6 @@ class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -29,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('profile_id')->default(2)->unsigned()->nullable();
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('set null');
         });
-        
+
         /*Artisan::call('db:seed',[
             '--class' => 'UsersTableSeeder',
             '--force' => true
@@ -38,8 +36,6 @@ class CreateUsersTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

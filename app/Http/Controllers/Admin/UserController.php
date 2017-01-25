@@ -3,88 +3,79 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Entities\Module;
 use App\Entities\Profile;
 use App\Entities\User;
-
 use Carbon\Carbon;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-    	$this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    public function userDelete($id = NULL)
+    public function userDelete($id = null)
     {
         $user = User::find($id)->delete($id);
 
-        if(request()->ajax())
-        {
-            return "Usuario eliminado";
+        if (request()->ajax()) {
+            return 'Usuario eliminado';
         }
     }
 
-    public function userForm($id = NULL)
+    public function userForm($id = null)
     {
         $getProfiles = Profile::all();
         $profiles = [];
 
-        foreach ($getProfiles as $getProfile)
-        {
+        foreach ($getProfiles as $getProfile) {
             $profiles[$getProfile->id] = $getProfile->name;
         }
 
-    	if($id == NULL)
-    	{
-    		return view('admin/users/edit',['action' => 'new', 'profiles' => $profiles]);
-    	}
-    	else
-    	{
-    		$user = User::findOrFail($id);
-    		return view('admin/users/edit',['action' => 'edit', 'profiles' => $profiles, 'user' => $user]);
-    	}
+        if ($id == null) {
+            return view('admin/users/edit', ['action' => 'new', 'profiles' => $profiles]);
+        } else {
+            $user = User::findOrFail($id);
+
+            return view('admin/users/edit', ['action' => 'edit', 'profiles' => $profiles, 'user' => $user]);
+        }
     }
 
     public function usersList()
     {   //exit('entro');
-    	$users = User::where('id','>',1)
+        $users = User::where('id', '>', 1)
                     ->select('id',
-                            'first_name', 
-                            'last_name', 
-                            'sex', 
-                            'birth_date', 
+                            'first_name',
+                            'last_name',
+                            'sex',
+                            'birth_date',
                             'email',
-                            'cellphone', 
-                            'localphone', 
+                            'cellphone',
+                            'localphone',
                             'profile_id',
                             'active')
                     ->paginate(10);
 
         $mainView = view('admin/users/list', ['users' => $users]);
 
-        if(request()->ajax())
-        {
+        if (request()->ajax()) {
             return $mainView;
-        }
-        else
-        {
+        } else {
             $modules = Module::all();
+
             return view('admin/layouts/template', ['modules' => $modules, 'modulesChild' => $modules, 'mainContent' => $mainView]);
         }
     }
 
     public function userStore()
     {
-    	$this->validate(request(), [
+        $this->validate(request(), [
             'first_name' => 'required|max:100',
-            'last_name'  => 'required|max:100',
+            'last_name' => 'required|max:100',
             'birth_date' => 'required',
-            'email'      => 'required|email|max:255|unique:users,email,'.request()->get('id'),
+            'email' => 'required|email|max:255|unique:users,email,'.request()->get('id'),
         ]);
 
         $data = request()->all();
@@ -93,34 +84,34 @@ class UserController extends Controller
         $date = Carbon::createFromFormat('d/m/Y', $data['birth_date']);
 
         switch ($data['action']) {
-        	case 'new':        		
-		        User::create([
-		            'first_name' => $data['first_name'],
-		            'last_name'  => $data['last_name'],
-		            'birth_date' => $date->format('Y-m-d'),
-		            'sex'        => $data['sex'],
-		            'email'      => $data['email'],
-		            'cellphone'  => $data['cellphone'],
-		            'localphone' => $data['localphone'],
-		            'password'   => bcrypt('123456'),
-		            'profile_id' => $data['profile'],
-		            'active'     => $data['active'],
-		        ]);
-        		break;
-        	
-        	case 'edit':
-		        User::find($data['id'])->update([
-									            'first_name' => $data['first_name'],
-									            'last_name'  => $data['last_name'],
-									            'birth_date' => $date->format('Y-m-d'),
-									            'sex'        => $data['sex'],
-									            'email'      => $data['email'],
-									            'cellphone'  => $data['cellphone'],
-									            'localphone' => $data['localphone'],
-									            'profile_id' => $data['profile'],
-									            'active'     => $data['active'],
-									        ]);
-        		break;
+            case 'new':
+                User::create([
+                    'first_name' => $data['first_name'],
+                    'last_name' => $data['last_name'],
+                    'birth_date' => $date->format('Y-m-d'),
+                    'sex' => $data['sex'],
+                    'email' => $data['email'],
+                    'cellphone' => $data['cellphone'],
+                    'localphone' => $data['localphone'],
+                    'password' => bcrypt('123456'),
+                    'profile_id' => $data['profile'],
+                    'active' => $data['active'],
+                ]);
+                break;
+
+            case 'edit':
+                User::find($data['id'])->update([
+                                                'first_name' => $data['first_name'],
+                                                'last_name' => $data['last_name'],
+                                                'birth_date' => $date->format('Y-m-d'),
+                                                'sex' => $data['sex'],
+                                                'email' => $data['email'],
+                                                'cellphone' => $data['cellphone'],
+                                                'localphone' => $data['localphone'],
+                                                'profile_id' => $data['profile'],
+                                                'active' => $data['active'],
+                                            ]);
+                break;
         }
 
         return redirect()->to('admin/users');
@@ -130,6 +121,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user['profile_name'] = $user->profile->name;
+
         return $user;
     }
 }

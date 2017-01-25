@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable = [
-    	'name', 'description',
+        'name', 'description',
     ];
 
     /**
-     * Relacion con con los usuarios
+     * Relacion con con los usuarios.
      */
     public function user()
     {

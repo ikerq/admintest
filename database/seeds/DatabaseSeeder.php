@@ -6,12 +6,9 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
-
         $this->truncateTables(array(
             'users',
             'password_resets',

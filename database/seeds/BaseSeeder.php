@@ -26,7 +26,7 @@ abstract class BaseSeeder extends Seeder
      */
     protected function createMultiple($total, array $customValues = array())
     {
-        for ($i = 1; $i <= $total; $i++) {
+        for ($i = 1; $i <= $total; ++$i) {
             $this->create($customValues);
         }
     }
@@ -35,13 +35,13 @@ abstract class BaseSeeder extends Seeder
      * Se encarga de instanciar el modelo
      * metodo abstracto que deberá ser declarado en su clase hija obligatoriamente.
      */
-    abstract function getModel();
+    abstract public function getModel();
 
     /**
      * Recibe un arreglo de valores aleatorios ($faker) o personalizados ($customValues)
      * metodo abstracto que deberá ser declarado en su clase hija obligatoriamente.
      */
-    abstract function getDummyData(Generator $faker, array $customValue = array());
+    abstract public function getDummyData(Generator $faker, array $customValue = array());
 
     /**
      * Metodo encargado de crear el registro en BD.
@@ -55,18 +55,19 @@ abstract class BaseSeeder extends Seeder
         // array_merge se encarga de hacer un merge entre dos arreglos de los
         // valores aleatorios del faker mas los valores personalizados.
         $values = array_merge($values, $customValues);
+
         return $this->addToPool($this->getModel()->create($values));
 
         // Este es el metodo create del ORM eloquent que se encuentra instaciado en la clase hija
         // Es el equivalente a decir User::create(['col1' => 'valor 1', 'col2' => 'valor 2'])
-
     }
     /**
-     * Se encarga de crear registros de prueba desde otro seeder, asignado a la variable $seeder
+     * Se encarga de crear registros de prueba desde otro seeder, asignado a la variable $seeder.
      */
     protected function createFrom($seeder, array $customValues = array())
     {
-        $seeder = new $seeder;
+        $seeder = new $seeder();
+
         return $seeder->create($customValues);
     }
 
@@ -76,13 +77,13 @@ abstract class BaseSeeder extends Seeder
      * $this->getRandom('User')->id ... extraera aleatoriamente un id creado en User.
      */
     protected function getRandom($model)
-    {   
+    {
         // Primero se verifica que este el modelo cargado en el
         // pool de lo contrario se arrojara una excepción
-        if(!$this->collectionExist($model))
-        {
+        if (!$this->collectionExist($model)) {
             throw new Exception("The $model collection does not exist");
         }
+
         return static::$pool[$model]->random();
     }
 
@@ -101,8 +102,7 @@ abstract class BaseSeeder extends Seeder
         // $class = get_class($entity);
         // dd($class);
 
-        if(!$this->collectionExist($class))
-        {
+        if (!$this->collectionExist($class)) {
             //instancia la clase Collection muy practica que trae laravel
             static::$pool[$class] = new Collection();
         }
@@ -115,7 +115,8 @@ abstract class BaseSeeder extends Seeder
     /**
      * Devuelve un true o false si existe o no la clase en el pool.
      */
-    protected function collectionExist($class){
+    protected function collectionExist($class)
+    {
         return isset(static::$pool[$class]);
     }
 }
