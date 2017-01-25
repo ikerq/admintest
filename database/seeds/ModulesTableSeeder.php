@@ -1,17 +1,21 @@
 <?php
 use App\Entities\Module;
-use Illuminate\Database\Seeder;
 
-class ModulesTableSeeder extends Seeder
+class ModulesTableSeeder extends BaseSeeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
+	function getModel()
+	{
+		return new Module;
+	}
+
+	function getDummyData(\Faker\Generator $faker, array $customValue = array())
+	{
+		return [];
+	}
     public function run()
     {
-        Module::create([
+        $this->create([
         	'name' 		  => 'Usuarios',
         	'description' => 'Usuarios del sistema',
         	'route'		  => '#',
@@ -21,7 +25,7 @@ class ModulesTableSeeder extends Seeder
         	'icon'		  => 'group',
     	]);
 
-        Module::create([
+        $this->create([
         	'name' 		  => 'Listado',
         	'description' => 'Listado de usuarios del sistema',
         	'route'		  => 'admin/users',
@@ -31,7 +35,7 @@ class ModulesTableSeeder extends Seeder
         	'order'		  => '1',
     	]);
 
-        Module::create([
+        $this->create([
         	'name' 		  => 'Registrar',
         	'description' => 'Formulario de registro de usuarios del sistema',
         	'route'		  => 'admin/users/edit',

@@ -20,10 +20,10 @@ class CreateProfilesTable extends Migration
             $table->timestamps();//created_at, updated_at
         });
 
-        Artisan::call('db:seed', [
+        /*Artisan::call('db:seed', [
             '--class' => 'ProfilesTableSeeder',
             '--force' => true ]
-        );
+        );*/
     }
 
     /**

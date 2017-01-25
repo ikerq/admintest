@@ -7,8 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Entities\Module;
-use App\Profile;
-use App\User;
+use App\Entities\Profile;
+use App\Entities\User;
 
 use Carbon\Carbon;
 
@@ -61,7 +61,7 @@ class UserController extends Controller
                             'email',
                             'cellphone', 
                             'localphone', 
-                            'id_profile', 
+                            'profile_id',
                             'active')
                     ->paginate(10);
 
@@ -103,7 +103,7 @@ class UserController extends Controller
 		            'cellphone'  => $data['cellphone'],
 		            'localphone' => $data['localphone'],
 		            'password'   => bcrypt('123456'),
-		            'id_profile' => $data['profile'],
+		            'profile_id' => $data['profile'],
 		            'active'     => $data['active'],
 		        ]);
         		break;
@@ -117,7 +117,7 @@ class UserController extends Controller
 									            'email'      => $data['email'],
 									            'cellphone'  => $data['cellphone'],
 									            'localphone' => $data['localphone'],
-									            'id_profile' => $data['profile'],
+									            'profile_id' => $data['profile'],
 									            'active'     => $data['active'],
 									        ]);
         		break;

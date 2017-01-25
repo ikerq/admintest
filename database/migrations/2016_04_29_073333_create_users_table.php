@@ -30,10 +30,10 @@ class CreateUsersTable extends Migration
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('set null');
         });
         
-        Artisan::call('db:seed',[
+        /*Artisan::call('db:seed',[
             '--class' => 'UsersTableSeeder',
             '--force' => true
-        ]);
+        ]);*/
     }
 
     /**

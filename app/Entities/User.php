@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Carbon\Carbon;
@@ -60,7 +60,7 @@ class User extends Authenticatable
     public function profile()
     {
         //belongsTo porque un usuario tiene un perfil
-        return $this->belongsTo(Profile::class,'id_profile');
+            return $this->belongsTo(Profile::class,'profile_id');
         /**
          * IMPORTANTE:
          * Por defecto belongsTo asumira el foreing key con el subfijo _id es decir deberia tomar profile_id

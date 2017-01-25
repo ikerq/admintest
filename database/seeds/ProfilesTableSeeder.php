@@ -1,27 +1,35 @@
 <?php
 
-use App\Profile;
-use Illuminate\Database\Seeder;
+use App\Entities\Profile;
 
-class ProfilesTableSeeder extends Seeder
+class ProfilesTableSeeder extends BaseSeeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
+
+    function getModel()
+    {
+        return new Profile();
+    }
+
+    function getDummyData(\Faker\Generator $faker, array $customValue = array())
+    {
+        return [];
+
+    }
+
     public function run()
     {
-        Profile::create(
+        $this->create(
             [
-                'name' => 'Administrador', 
+                'name' => 'Administrador',
                 'description' => 'Usuario encargado de la gestión completa de todo el sistema, por lo tanto tiene total privilegio en el mismo'
             ]
         );
-        Profile::create(
+
+        $this->create(
             [
-                'name' => 'Usuario', 
-                'description' => 'Usuario cliente que solo podrá realizar consultas y peticiones en el sistema'
+                'name' => 'Usuario',
+                'description' => 'Usuario cliente que solo podrá realizar consultas y peticiones en el sistema cliente'
             ]
         );
     }
